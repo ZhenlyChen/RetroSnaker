@@ -6,6 +6,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <termios.h>
+#include <string.h>
 #include <sys/select.h>
 #define SNAKE_MAX_LENGTH 200
 #define BLANK_CELL ' '
@@ -60,7 +61,7 @@ int snakeX[SNAKE_MAX_LENGTH] = {1, 2, 3, 4, 5};
 int snakeY[SNAKE_MAX_LENGTH] = {1, 1, 1, 1, 1};
 int FsnakeX[SNAKE_MAX_LENGTH] = {1, 2, 3, 4, 5};
 int FsnakeY[SNAKE_MAX_LENGTH] = {1, 1, 1, 1, 1};
-int is_over = 0, is_begin = 0, speed = 200, snakeLength = 5;//蛇的初始长度
+int is_over = 0, is_begin = 0, speed = 30, snakeLength = 5;//蛇的初始长度
 char SNAKE_HEAD  = 'X', SNAKE_BODY = 'O';//蛇的皮肤
 int whereX = 0, whereY = 0;
 int test1,test2,test3,test4,test5,test6;
@@ -77,10 +78,30 @@ void gameset(char input);//游戏设置
 
 void sleep_ms(unsigned int secs);//毫秒级延时系统
 
+int snakeAi(int fuk, int fck, int *snakeX, int *snakeY, int ok, int free, int whereXss, int whereYss);
+/*AI函数
+参数1（取向于头部）的权重，
+参数2（趋向于尾部）的权重，
+蛇当前x坐标序列，
+蛇当前y坐标序列，
+是否有画面输出（0/1），
+是否进行反向取值（0/1），
+蛇移动的目标X坐标，
+蛇移动的目标y坐标
+*/
+int FsnakeMove(int nextX, int nextY, int posX, int posY);
+/*虚拟移动函数
+下一步X坐标
+下一步Y坐标
+目标X坐标
+目标Y坐标
+*/
+void new(void);
+/*重新赋值虚拟位置
+*/
+
 
 void snakeMove(int nextX, int nextY){
-  test1 = nextY;
-  test2 = nextX;
   if (map[nextY][nextX] == WALL_CELL) {//如果撞墙了
     //gameover();
     is_over = 1;
@@ -228,5 +249,97 @@ void gameset(char input){
       printf("*  皮肤：%c%c%c%c%c   *          \n", SNAKE_BODY, SNAKE_BODY, SNAKE_BODY, SNAKE_BODY, SNAKE_HEAD);
       printf("\033[u");
 }
-//char temp_where = 0;//消除输入延时**未实现**
+
+void new(void){
+  for (int index = 0;index < snakeLength; index ++){
+        FsnakeX[index] = snakeX[index];
+        FsnakeY[index] = snakeY[index];
+  }
+}
+
+int FsnakeMove(int nextX, int nextY, int posX, int posY){
+  if (map[nextY][nextX] == WALL_CELL) {//如果撞墙了
+    return 1;
+  }
+  if (nextY == posY && nextX == posX) { // 吃到东西了
+    return 2;
+  } else {
+    for (int index = 0; index < snakeLength - 1; index ++){//更新身体坐标
+    FsnakeX[index] = FsnakeX[index + 1];
+    FsnakeY[index] = FsnakeY[index + 1];
+    }
+    FsnakeX[snakeLength - 1] = nextX;
+    FsnakeY[snakeLength - 1] = nextY;
+  }
+  for (int index = 0; index < snakeLength; index ++){//如果撞到自己的身体了
+    for (int indey = 0; indey < snakeLength; indey ++){
+      if (FsnakeX[index] == FsnakeX[indey] && FsnakeY[index] == FsnakeY[indey] && index != indey){
+        return 1;
+      }
+    }
+  }
+  return 0;
+}
+
+
+int snakeAi(int fuk, int fck, int *snakeX, int *snakeY, int ok, int free, int whereXss, int whereYss){
+  int flags = 0;
+  while (flags != 2){
+  int nextX[3], nextY[3], distance[3], maxDis = 0;
+  nextX[0] = 2 * snakeX[snakeLength - 1] - snakeX[snakeLength - 2];//前方
+  nextY[0] = 2 * snakeY[snakeLength - 1] - snakeY[snakeLength - 2];
+  if (snakeX[snakeLength - 1] == snakeX[snakeLength - 2]){
+    nextX[1] = snakeX[snakeLength - 1] + 1; //左方
+    nextY[1] = snakeY[snakeLength - 1];
+    nextX[2] = snakeX[snakeLength - 1] - 1; //右方
+    nextY[2] = snakeY[snakeLength - 1];
+  } else {
+    nextX[1] = snakeX[snakeLength - 1]; //左方
+    nextY[1] = snakeY[snakeLength - 1] + 1;
+    nextX[2] = snakeX[snakeLength - 1]; //右方
+    nextY[2] = snakeY[snakeLength - 1] - 1;
+  }
+
+  for (int index = 0; index < 3; index ++) {//计算最优方位
+    distance[index] = ((whereXss - nextX[index]) * (whereXss - nextX[index]) + (whereYss - nextY[index]) * (whereYss - nextY[index])) * fuk + ((snakeX[0] - nextX[index]) * (snakeX[0] - nextX[index]) + (snakeY[0] - nextY[index]) * (snakeY[0] - nextY[index])) * fck;
+    if (free == 1) {
+      distance[index] = -distance[index];
+    }
+    if (map[nextY[index]][nextX[index]] == '*') distance[index] += 5000;
+      for (int myindex = 0; myindex < snakeLength; myindex ++){//如果撞到自己的身体了
+          if (snakeX[myindex] == nextX[index] && snakeY[myindex] == nextY[index]){
+            distance[index] += 5000;
+            break;
+          }
+      }
+  }
+  maxDis = distance[0];
+  for (int index = 1; index < 3; index ++) {
+    maxDis = (maxDis > distance[index]) ? distance[index] : maxDis;
+  }
+  if (ok == 0){
+    if (maxDis == distance[0]) {
+      flags = FsnakeMove(nextX[0], nextY[0], whereXss, whereYss);
+    } else if (maxDis == distance[1]){
+      flags = FsnakeMove(nextX[1], nextY[1], whereXss, whereYss);
+    } else {
+      flags = FsnakeMove(nextX[2], nextY[2], whereXss, whereYss);
+    }
+    if(flags == 1) return 0;
+  } else {
+    if (maxDis == distance[0]) {
+      snakeMove(nextX[0], nextY[0]);
+      break;
+    } else if (maxDis == distance[1]){
+      snakeMove(nextX[1], nextY[1]);
+      break;
+    } else {
+      snakeMove(nextX[2], nextY[2]);
+      break;
+    }
+  }
+}
+  return 1;
+}
+
 #endif
