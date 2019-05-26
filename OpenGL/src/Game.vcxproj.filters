@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\Game">
+      <UniqueIdentifier>{59720fb9-9358-4e98-bcbd-7496191f698a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Game\Sprite">
+      <UniqueIdentifier>{41c3ba0a-98c7-4aa7-a047-6bf382b912e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Game\GLSL">
+      <UniqueIdentifier>{73702893-61eb-43a1-b347-5f5f587965ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Game\AI">
+      <UniqueIdentifier>{cc50ac46-481b-4774-b477-54c649d076dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Game\Camera">
+      <UniqueIdentifier>{0e36c5bb-a6e5-4a2f-b639-813fed9cb4f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Game\Shader">
+      <UniqueIdentifier>{ec5d300c-b919-4d5a-982d-37887a95f65c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Game\SpriteRenderer">
+      <UniqueIdentifier>{009f938f-7713-482b-b6a4-764f2a5252e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Game\ResourceManager">
+      <UniqueIdentifier>{c0b30871-e686-4f18-90f2-2cce8608eca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Game\Util">
+      <UniqueIdentifier>{3c359a9b-3b58-41c9-b402-55ec143fd589}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Lib">
+      <UniqueIdentifier>{5b276d1a-6253-4b4c-8b09-ff8bf525ee05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Lib\GLAD">
+      <UniqueIdentifier>{610827d0-9a2e-4ae3-bcca-5ebae218b741}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Lib\ImGUI">
+      <UniqueIdentifier>{dd117e64-ec3c-4052-9783-8c6f29a93628}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Lib\stbImage">
+      <UniqueIdentifier>{86781660-3b74-4c9e-90e0-ff01e4cc838b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\imgui\imgui.cpp">
+      <Filter>源文件\Lib\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\imgui\imgui_demo.cpp">
+      <Filter>源文件\Lib\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\imgui\imgui_draw.cpp">
+      <Filter>源文件\Lib\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\imgui\imgui_impl_glfw.cpp">
+      <Filter>源文件\Lib\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\imgui\imgui_impl_opengl3.cpp">
+      <Filter>源文件\Lib\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\imgui\imgui_widgets.cpp">
+      <Filter>源文件\Lib\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\glad\glad.c">
+      <Filter>源文件\Lib\GLAD</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Game.cpp">
+      <Filter>源文件\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stb_image\stb_image.cpp">
+      <Filter>源文件\Lib\stbImage</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\AI\SmartSnake.cpp">
+      <Filter>源文件\Game\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Camera\Camera.cpp">
+      <Filter>源文件\Game\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\SpriteRenderer\SpriteRenderer.cpp">
+      <Filter>源文件\Game\SpriteRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\ResourceManager\ResourceManager.cpp">
+      <Filter>源文件\Game\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\ResourceManager\Texture.cpp">
+      <Filter>源文件\Game\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\ResourceManager\Model.cpp">
+      <Filter>源文件\Game\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Shader\Shader.cpp">
+      <Filter>源文件\Game\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Sprite\SpriteTable.h">
+      <Filter>源文件\Game\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Sprite\SpriteSnake.cpp">
+      <Filter>源文件\Game\Sprite</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lib\imgui\imgui_internal.h">
+      <Filter>源文件\Lib\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\imgui\imstb_rectpack.h">
+      <Filter>源文件\Lib\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\imgui\imstb_textedit.h">
+      <Filter>源文件\Lib\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\imgui\imstb_truetype.h">
+      <Filter>源文件\Lib\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\imgui\imconfig.h">
+      <Filter>源文件\Lib\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\imgui\imgui.h">
+      <Filter>源文件\Lib\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\imgui\imgui_impl_glfw.h">
+      <Filter>源文件\Lib\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\imgui\imgui_impl_opengl3.h">
+      <Filter>源文件\Lib\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Game.h">
+      <Filter>源文件\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\stb_image\stb_image.h">
+      <Filter>源文件\Lib\stbImage</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\AI\SmartSnake.h">
+      <Filter>源文件\Game\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Camera\Camera.h">
+      <Filter>源文件\Game\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Util\Util.h">
+      <Filter>源文件\Game\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\SpriteRenderer\SpriteRenderer.h">
+      <Filter>源文件\Game\SpriteRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ResourceManager\ResourceManager.h">
+      <Filter>源文件\Game\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ResourceManager\Texture.h">
+      <Filter>源文件\Game\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ResourceManager\Mesh.h">
+      <Filter>源文件\Game\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ResourceManager\Model.h">
+      <Filter>源文件\Game\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Shader\Shader.h">
+      <Filter>源文件\Game\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Sprite\Sprite.h">
+      <Filter>源文件\Game\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Sprite\SpriteGarden.h">
+      <Filter>源文件\Game\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Sprite\SpriteSun.h">
+      <Filter>源文件\Game\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Sprite\SpriteSnake.h">
+      <Filter>源文件\Game\Sprite</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Game\GLSL\font.fs.glsl">
+      <Filter>源文件\Game\GLSL</Filter>
+    </None>
+    <None Include="Game\GLSL\font.vs.glsl">
+      <Filter>源文件\Game\GLSL</Filter>
+    </None>
+    <None Include="Game\GLSL\object.fs.glsl">
+      <Filter>源文件\Game\GLSL</Filter>
+    </None>
+    <None Include="Game\GLSL\object.vs.glsl">
+      <Filter>源文件\Game\GLSL</Filter>
+    </None>
+  </ItemGroup>
+</Project>
