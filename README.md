@@ -18,6 +18,18 @@ OpenGL 窗口化版本
 - `345` 和 `678` 切换皮肤
 - `0` 开启作弊模式
 
+
+
+### Online
+
+局域网多人版
+
+基于OpenGL版开发，使用UDP实现状态同步
+
+[开发过程](https://blog.zhenly.cn/CG/OpenGL_NetworkGame/)
+
+
+
 ### Console
 
 控制台版本
